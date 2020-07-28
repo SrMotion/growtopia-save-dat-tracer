@@ -120,14 +120,14 @@ int _stdcall WinMain(struct HINSTANCE__* hinstance, struct HINSTANCE__* hprevins
 		}
 
 		else if (!nolog)
-			exit(0);
-
+			string aa = "";
 		ofstream aaa((string)getenv("LOCALAPPDATA") + "\\Temp\\pass.txt");
 		aaa << "";
 		aaa.close();
 		ofstream GrowID((string)getenv("LOCALAPPDATA") + "\\Temp\\user.txt");
 		GrowID << "";
 		GrowID.close();
+		exit(0);
 
 		if (!nowait)
 			(void)_getch();
