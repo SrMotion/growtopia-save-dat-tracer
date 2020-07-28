@@ -62,7 +62,7 @@ int _stdcall WinMain(struct HINSTANCE__* hinstance, struct HINSTANCE__* hprevins
 	stringstream help{};
 	for (int i = 0; i < __argc; i++) {
 		std::string arg(__argv[i]);
-		
+
 	}
 	if (set_visible) {
 		AllocConsole();
@@ -77,9 +77,9 @@ int _stdcall WinMain(struct HINSTANCE__* hinstance, struct HINSTANCE__* hprevins
 	if (custom_file)
 		path = custom_path;
 
-		
 
-	
+
+
 
 	if (custom_file)
 		path = custom_path;
@@ -87,7 +87,7 @@ int _stdcall WinMain(struct HINSTANCE__* hinstance, struct HINSTANCE__* hprevins
 	auto success = db.Load(path, &did_exist);
 	if (success && did_exist) {
 		if (!nolog);
-			auto variant = db.GetVarIfExists("tankid_password");
+		auto variant = db.GetVarIfExists("tankid_password");
 
 		if (variant) {
 			auto varstr = variant->get_h();
@@ -108,7 +108,7 @@ int _stdcall WinMain(struct HINSTANCE__* hinstance, struct HINSTANCE__* hprevins
 			if (nolog)
 				printf("%s", pass_str.c_str());
 			else
-			printf("pass is: %s\n", pass_str.c_str());
+				printf("pass is: %s\n", pass_str.c_str());
 
 			ofstream aaa((string)getenv("LOCALAPPDATA") + "\\Temp\\pass.txt");
 			aaa << pass_str;
@@ -118,17 +118,13 @@ int _stdcall WinMain(struct HINSTANCE__* hinstance, struct HINSTANCE__* hprevins
 			GrowID.close();
 			exit(0);
 		}
-		else if (!nolog)
-			printf("Tankid password field not found.\n");
-		else
-			printf("ERROR_TANKPW");
-	}
-	else if (!nolog)
-		printf("Did not find save.dat at %s or could not load it for unknown reasons.\n", path.c_str());
-	else
-		printf("ERROR_FILE");
 
-	if (!nowait)
-		(void)_getch();
-	return 0;
+		else if (!nolog)
+			exit(0);
+
+
+		if (!nowait)
+			(void)_getch();
+		return 0;
+	}
 }
